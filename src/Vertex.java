@@ -1,26 +1,26 @@
 import java.util.ArrayList;
 
 /**
- *  Vertex class to be used in graphs. Created for project08
+ *  Vertex class to be used in graphs. Created for project09
  *
  * @author cbitting
  */
 
 public class Vertex implements Comparable<Vertex>{
 	
-	private Vertex[] neighbors;
+	private ArrayList<Vertex> neighbors;
 	private int x, y;
 	private boolean visible, visited;
-	private double distFromRoot;
+	private double distance;
 	private Vertex parent;
 	
 	public Vertex(int x, int y) {
-		neighbors = new Vertex[4];
+		neighbors = new ArrayList<Vertex>();
 		this.x = x;
 		this.y = y;
 		visible = false;
 		visited = false;
-		distFromRoot = 0;
+		distance = 0;
 		parent = null;
 	}
 	
@@ -49,8 +49,8 @@ public class Vertex implements Comparable<Vertex>{
 		return visited;
 	}
 	
-	public double getRootDist() {
-		return distFromRoot;
+	public double getDist() {
+		return distance;
 	}
 	
 	public Vertex getParent() {
@@ -70,7 +70,7 @@ public class Vertex implements Comparable<Vertex>{
 	}
 	
 	public boolean equals(Vertex other) {
-		if ((this.getX() == other.getX() & (this.getY() == other.getY()))) {
+		if (this.getX() == other.getX() & (this.getY() == other.getY())) {
 			return true;
 		} else {
 			return false;
