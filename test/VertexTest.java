@@ -55,8 +55,10 @@ class VertexTest {
 	@Test
 	void visitedTest() {
 		assertFalse(vertex.isVisited());
-		vertex.setVisited();
+		vertex.setVisited(true);
 		assertTrue(vertex.isVisited());
+		vertex.setVisited(false);
+		assertFalse(vertex.isVisited());
 	}
 	
 	@Test
@@ -76,6 +78,15 @@ class VertexTest {
 		// cost more
 		Vertex cheap = new Vertex(1, 2, 1);
 		assertTrue(vertex.compareTo(cheap)  > 0);
+	}
+	
+	@Test
+	void connectTest() {
+		Vertex noConncet = new Vertex(10, 11);
+		other.connect(noConncet);
+		vertex.connect(other);
+		assertNotEquals(null, vertex.getNeighbor(3, 5));
+		assertEquals(null, vertex.getNeighbor(10, 11));
 	}
 
 }

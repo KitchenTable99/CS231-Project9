@@ -108,6 +108,7 @@ public class Graph {
 		// initialize all vertices to have a large cost, and a null parent
 		for (Vertex v : contents) {
 			v.setCost(1e+7);
+			v.setVisited(false);
 		}
 		// create priority queue
 		PriorityQueue<Vertex> pq = new PriorityQueue<Vertex>();
@@ -123,15 +124,15 @@ public class Graph {
 				continue;
 			}
 			// mark as visited
-			focus.setVisited();
+			focus.setVisited(true);
 			// for each neighbor
 			for (Vertex v : focus.getNeighbors()) {
 				// find distance between focus node and neighbor
 				double distance = focus.distance(v);
 				// if neighbor not visited already and the calculated distance is "better"
-				if (!v.isVisited() && distance < v.getCost()) {
+				if (!(v.isVisited()) && distance < v.getCost()) {
 					// update cost
-					v.setCost(distance);
+					v.setCost(focus.getCost() + distance);
 					// make focus parent of neighbor
 					v.setParent(focus);
 					// add neighbor to queue

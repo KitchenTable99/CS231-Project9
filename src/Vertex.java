@@ -24,6 +24,16 @@ public class Vertex implements Comparable<Vertex>{
 		parent = null;
 	}
 	
+	public Vertex(int x, int y) {
+		neighbors = new ArrayList<Vertex>();
+		this.x = x;
+		this.y = y;
+		visible = false;
+		visited = false;
+		this.cost = 0;
+		parent = null;
+	}
+	
 	
 	/**
 	 * @return the ArrayList<Vertex> of neighbors
@@ -81,8 +91,8 @@ public class Vertex implements Comparable<Vertex>{
 	/**
 	 * sets the Vertex to visited
 	 */
-	public void setVisited() {
-		visited = true;
+	public void setVisited(boolean newState) {
+		visited = newState;
 	}
 	
 	/**
@@ -159,8 +169,7 @@ public class Vertex implements Comparable<Vertex>{
 	
 	@Override
 	public String toString() {
-		String toReturn = "";
-		toReturn += "num neighbors: " + this.numNeighbors();
+		String toReturn = "(" + x +", "+y+")";
 		toReturn += "\tcost: " + cost;
 		toReturn += "\tmarked: " + visited;
 		return toReturn;
