@@ -23,22 +23,6 @@ class GraphTest {
 		empty = new Graph();
 	}
 	
-	@SuppressWarnings("serial")
-	@Test
-	void constructorTest() {
-		// empty
-		assertEquals(new ArrayList<Vertex>(), empty.getContents());
-		// pre-made
-		ArrayList<Vertex> innards = new ArrayList<Vertex>() {{
-			add(new Vertex(1, 1, 1e+7));
-			add(new Vertex(3, 1, 1e+7));
-			add(new Vertex(7, 4, 1e+7));
-			add(new Vertex(1, 7, 1e+7));
-			add(new Vertex(3, 7, 1e+7));
-		}};
-		assertEquals(innards, graph.getContents());
-	}
-	
 	@Test
 	void vertexCount() {
 		assertEquals(0, empty.vertexCount());
@@ -74,7 +58,7 @@ class GraphTest {
 		// check for no need to add
 		graph.addBiEdge(graph.getVertexAt(1, 1), graph.getVertexAt(3, 1));
 		assertNotEquals(null, graph.getVertexAt(1, 1).getNeighbor(3, 1));
-		assertEquals(null, graph.getVertexAt(3, 1).getNeighbor(1, 1));
+		assertNotEquals(null, graph.getVertexAt(3, 1).getNeighbor(1, 1));
 	}
 
 }

@@ -40,20 +40,14 @@ public class Vertex implements Comparable<Vertex>{
 	public Vertex getNeighbor(int x, int y) {
 		// set up
 		Vertex neighbor = null;
-		boolean found = false;
 		// go through neighbor list loooking for ints
 		for (Vertex v : neighbors) {
-			neighbor = v;
 			if (v.getX() == x && v.getY() == y) {
-				found = true;
+				neighbor = v;
 				break;
 			}
 		}
-		if (found) {
-			return neighbor;
-		} else {
-			return null;
-		}
+		return neighbor;
 	}
 	
 	/**

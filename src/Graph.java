@@ -24,7 +24,14 @@ public class Graph {
 	 * @return Vertex object stored at that position or null if no Vertex present
 	 */
 	public Vertex getVertexAt(int x, int y) {
-		return null;
+		Vertex toReturn = null;
+		for (Vertex v : contents) {
+			if (v.getX() == x && v.getY() == y) {
+				toReturn = v;
+				break;
+			}
+		}		
+		return toReturn;
 	}
 	
 	/**
@@ -38,7 +45,7 @@ public class Graph {
 	 * @return the number of vertices in the graph
 	 */
 	public int vertexCount() {
-		return 0;
+		return contents.size();
 	}
 	
 	/**
@@ -46,7 +53,12 @@ public class Graph {
 	 * @return whether or not the vertex is present
 	 */
 	public boolean inGraph(Vertex query) {
-		return false;
+		Vertex foo = this.getVertexAt(query.getX(), query.getY());
+		if (foo == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	/**
@@ -55,7 +67,16 @@ public class Graph {
 	 * @param v2 Vertex 2
 	 */
 	public void addUniEdge(Vertex v1, Vertex v2) {
-		return;
+		// add vertices if needed
+		if (!inGraph(v1)) {
+			contents.add(v1);
+		}
+		if (!inGraph(v2)) {
+			contents.add(v2);
+		}
+		// connect
+		v1.connect(v2);
+		return;		
 	}
 	
 	/**
@@ -65,6 +86,16 @@ public class Graph {
 	 * @param v2 Vertex 2
 	 */
 	public void addBiEdge(Vertex v1, Vertex v2) {
+		// add vertices if needed
+		if (!inGraph(v1)) {
+			contents.add(v1);
+		}
+		if (!inGraph(v2)) {
+			contents.add(v2);
+		}
+		// connect
+		v1.connect(v2);
+		v2.connect(v1);
 		return;
 	}
 	
