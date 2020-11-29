@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 /**
  *  Graph class. Created for project09
@@ -104,6 +105,40 @@ public class Graph {
 	 * @param v0 starting Vertex
 	 */
 	public void shortestPath(Vertex v0) {
+		// initialize all vertices to have a large cost, and a null parent
+		for (Vertex v : contents) {
+			v.setCost(1e+7);
+		}
+		// create priority queue
+		PriorityQueue<Vertex> pq = new PriorityQueue<Vertex>();
+		// add v0 with a cost of 0
+		v0.setCost(0);
+		pq.add(v0);
+		// while the queue isn't empty
+		while (!pq.isEmpty()) {
+			// take lowest cost off
+			Vertex focus = pq.poll();
+			// if visited, continue
+			if (focus.isVisited()) {
+				continue;
+			}
+			// mark as visited
+			focus.setVisited();
+			// for each neighbor
+			for (Vertex v : focus.getNeighbors()) {
+				// find distance between focus node and neighbor
+				double distance = focus.distance(v);
+				// if neighbor not visited already and the calculated distance is "better"
+				if (!v.isVisited() && distance < v.getCost()) {
+					// update cost
+					v.setCost(distance);
+					// make focus parent of neighbor
+					v.setParent(focus);
+					// add neighbor to queue
+					pq.add(v);
+				}
+			}
+		}
 		return;
 	}
 

@@ -46,6 +46,27 @@ class VertexTest {
 	}
 	
 	@Test
+	void costTest() {
+		assertEquals(10, vertex.getCost());
+		vertex.setCost(11);
+		assertEquals(11, vertex.getCost());
+	}
+	
+	@Test
+	void visitedTest() {
+		assertFalse(vertex.isVisited());
+		vertex.setVisited();
+		assertTrue(vertex.isVisited());
+	}
+	
+	@Test
+	void parentTest() {
+		assertEquals(null, vertex.getParent());
+		vertex.setParent(other);
+		assertEquals(other, vertex.getParent());
+	}
+	
+	@Test
 	void compareToTest() {
 		// cost less
 		assertTrue(vertex.compareTo(other) < 0);

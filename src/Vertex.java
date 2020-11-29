@@ -79,6 +79,13 @@ public class Vertex implements Comparable<Vertex>{
 	}
 	
 	/**
+	 * sets the Vertex to visited
+	 */
+	public void setVisited() {
+		visited = true;
+	}
+	
+	/**
 	 * @return the internal cost field
 	 */
 	public double getCost() {
@@ -86,10 +93,24 @@ public class Vertex implements Comparable<Vertex>{
 	}
 	
 	/**
+	 * @param newCost to be the new cost
+	 */
+	public void setCost(double newCost) {
+		cost = newCost;
+	}
+	
+	/**
 	 * @return the parent vertex.
 	 */
 	public Vertex getParent() {
 		return parent;
+	}
+	
+	/**
+	 * @param v the future parent
+	 */
+	public void setParent(Vertex v) {
+		parent = v;
 	}
 		
 	/**
