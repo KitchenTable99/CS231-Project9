@@ -26,11 +26,26 @@ public class Vertex implements Comparable<Vertex>{
 	
 	// accessors and mutators
 	public ArrayList<Vertex> getNeighbors() {
-		return null;
+		return neighbors;
 	}
 	
 	public Vertex getNeighbor(int x, int y) {
-		return null;
+		// set up
+		Vertex neighbor = null;
+		boolean found = false;
+		// go through neighbor list loooking for ints
+		for (Vertex v : neighbors) {
+			neighbor = v;
+			if (v.getX() == x && v.getY() == y) {
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			return neighbor;
+		} else {
+			return null;
+		}
 	}
 	
 	public int getX() {
@@ -58,15 +73,25 @@ public class Vertex implements Comparable<Vertex>{
 	}
 		
 	public double distance(Vertex other) {
-		return 0;
+		// set up variables
+		double x1 = x;
+		double x2 = other.getX();
+		double y1 = y;
+		double y2 = other.getY();
+		// create legs
+		double ac = Math.abs(y2 - y1);
+		double cb = Math.abs(x2 - x1);
+		// find hypot
+		return Math.hypot(ac, cb);
+		
 	}
 	
 	public void connect(Vertex other) {
-		return;
+		neighbors.add(other);
 	}
 	
 	public int numNeighbors() {
-		return 0;
+		return neighbors.size();
 	}
 	
 	public boolean equals(Vertex other) {
@@ -83,8 +108,8 @@ public class Vertex implements Comparable<Vertex>{
 
 	@Override
 	public int compareTo(Vertex o) {
-		// TODO Auto-generated method stub
-		return 0;
+		double oCost = o.getCost();
+		return (int) (cost - oCost);
 	}
 
 }

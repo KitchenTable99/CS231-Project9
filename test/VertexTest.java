@@ -40,15 +40,21 @@ class VertexTest {
 	}
 	
 	@Test
+	void distanceTest() {
+		Vertex specialTriangle = new Vertex(6, 8, 100);
+		assertEquals(5, vertex.distance(specialTriangle));
+	}
+	
+	@Test
 	void compareToTest() {
 		// cost less
-		assertEquals(vertex.compareTo(other), -1);
+		assertTrue(vertex.compareTo(other) < 0);
 		// equal cost
 		Vertex identical = new Vertex(4, 4, 10);
 		assertEquals(vertex.compareTo(identical), 0);
 		// cost more
 		Vertex cheap = new Vertex(1, 2, 1);
-		assertEquals(vertex.compareTo(cheap), -1);
+		assertTrue(vertex.compareTo(cheap)  > 0);
 	}
 
 }
