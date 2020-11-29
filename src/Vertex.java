@@ -24,11 +24,19 @@ public class Vertex implements Comparable<Vertex>{
 		parent = null;
 	}
 	
-	// accessors and mutators
+	
+	/**
+	 * @return the ArrayList<Vertex> of neighbors
+	 */
 	public ArrayList<Vertex> getNeighbors() {
 		return neighbors;
 	}
 	
+	/**
+	 * @param x position of neighbor
+	 * @param y position of neighbor
+	 * @return Vertex object of neighbor if in neighbor list. Returns null if not
+	 */
 	public Vertex getNeighbor(int x, int y) {
 		// set up
 		Vertex neighbor = null;
@@ -48,30 +56,52 @@ public class Vertex implements Comparable<Vertex>{
 		}
 	}
 	
+	/**
+	 * @return x position
+	 */
 	public int getX() {
 		return x;
 	}
 	
+	/**
+	 * @return y position
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * @return if object visible
+	 */
 	public boolean isVisible() {
 		return visible;
 	}
 	
+	/**
+	 * @return if object visited
+	 */
 	public boolean isVisited() {
 		return visited;
 	}
 	
+	/**
+	 * @return the internal cost field
+	 */
 	public double getCost() {
 		return cost;
 	}
 	
+	/**
+	 * @return the parent vertex.
+	 */
 	public Vertex getParent() {
 		return parent;
 	}
 		
+	/**
+	 * @param other Vertex to compare with
+	 * @return the Euclidean distance between two vertexes
+	 */
 	public double distance(Vertex other) {
 		// set up variables
 		double x1 = x;
@@ -86,14 +116,24 @@ public class Vertex implements Comparable<Vertex>{
 		
 	}
 	
+	/**
+	 * @param other Vertex to connect this one to
+	 */
 	public void connect(Vertex other) {
 		neighbors.add(other);
 	}
 	
+	/**
+	 * @return the number of neighbors
+	 */
 	public int numNeighbors() {
 		return neighbors.size();
 	}
 	
+	/**
+	 * @param other Vertex to compare to
+	 * @return if the Vertexes are equal
+	 */
 	public boolean equals(Vertex other) {
 		if (this.getX() == other.getX() & (this.getY() == other.getY())) {
 			return true;
@@ -102,8 +142,13 @@ public class Vertex implements Comparable<Vertex>{
 		}
 	}
 	
+	@Override
 	public String toString() {
-		return null;
+		String toReturn = "";
+		toReturn += "num neighbors: " + this.numNeighbors();
+		toReturn += "\tcost: " + cost;
+		toReturn += "\tmarked: " + visited;
+		return toReturn;
 	}
 
 	@Override
