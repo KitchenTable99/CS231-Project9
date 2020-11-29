@@ -11,16 +11,16 @@ public class Vertex implements Comparable<Vertex>{
 	private ArrayList<Vertex> neighbors;
 	private int x, y;
 	private boolean visible, visited;
-	private double distance;
+	private double cost;
 	private Vertex parent;
 	
-	public Vertex(int x, int y) {
+	public Vertex(int x, int y, double cost) {
 		neighbors = new ArrayList<Vertex>();
 		this.x = x;
 		this.y = y;
 		visible = false;
 		visited = false;
-		distance = 0;
+		this.cost = cost;
 		parent = null;
 	}
 	
@@ -29,7 +29,7 @@ public class Vertex implements Comparable<Vertex>{
 		return null;
 	}
 	
-	public Vertex isNeighbor(int x, int y) {
+	public Vertex getNeighbor(int x, int y) {
 		return null;
 	}
 	
@@ -49,8 +49,8 @@ public class Vertex implements Comparable<Vertex>{
 		return visited;
 	}
 	
-	public double getDist() {
-		return distance;
+	public double getCost() {
+		return cost;
 	}
 	
 	public Vertex getParent() {
