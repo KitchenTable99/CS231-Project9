@@ -142,5 +142,52 @@ public class Graph {
 		}
 		return;
 	}
+	
+	public static void main(String[] args) {
+		// make vertices
+		Vertex a = new Vertex(2, 9);
+		Vertex b = new Vertex(1, 3);
+		Vertex c = new Vertex(3, 1);
+		Vertex d = new Vertex(2, 10);
+		Vertex e = new Vertex(6, 12);
+		Vertex f = new Vertex(4, 9);
+		Vertex g = new Vertex(11, 1);
+		Vertex h = new Vertex(11, 5);
+		Vertex i = new Vertex(8, 12);
+		Vertex j = new Vertex(12, 10);
+		Vertex k = new Vertex(7, 5);
+		
+		// place on graph
+		Graph graph = new Graph();
+		graph.addBiEdge(a, b);
+		graph.addBiEdge(a, d);
+		graph.addBiEdge(a, f);
+		graph.addBiEdge(b, c);
+		graph.addBiEdge(c, i);
+		graph.addBiEdge(d, e);
+		graph.addBiEdge(e, f);
+		graph.addBiEdge(e, i);
+		graph.addBiEdge(f, h);
+		graph.addBiEdge(g, h);
+		graph.addBiEdge(h, j);
+		graph.addBiEdge(i, k);
+		graph.addBiEdge(j, k);
+		
+		// run using a as starting point
+		graph.shortestPath(a);
+		// print out costs
+		System.out.println("For starting point a:");
+		for (Vertex v : graph.getContents()) {
+			System.out.println(v);
+		}
+		System.out.println();
+		// run using k as starting point
+		graph.shortestPath(k);
+		// print out costs
+		System.out.println("For starting point k:");
+		for (Vertex v : graph.getContents()) {
+			System.out.println(v);
+		}
+	}
 
 }
