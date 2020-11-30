@@ -8,7 +8,7 @@
 
 import java.util.ArrayList;
 
-public class GraphTester {
+public class PathfindingTester {
 
     // test a graph with seven nodes connected in a loop
     public void test1() {
@@ -140,7 +140,7 @@ public class GraphTester {
 
     public static void main(String[] argv) {
 
-	GraphTester gt = new GraphTester();
+	PathfindingTester gt = new PathfindingTester();
 
 	gt.test1();
 
